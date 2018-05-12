@@ -1,0 +1,42 @@
+{
+  "name": "noble-avatar-js",
+  "version": "0.1.0",
+  "description": "Graphical character creator for Twine.",
+  "main": "gulpfile.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "dependencies": {
+    "fs-extra": "^6.0.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-clean-css": "^3.9.4",
+    "gulp-jshint": "^2.1.0",
+    "gulp-replace": "^0.6.1",
+    "gulp-uglify": "^3.0.0",
+    "gulp-rename": "^1.2.2",
+    "jshint": "^2.9.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChapelR/noble-avatar-js.git"
+  },
+  "keywords": [
+    "twine",
+    "rpg",
+    "interactive-fiction",
+    "character-creation"
+  ],
+  "author": "chapel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ChapelR/noble-avatar-js/issues"
+  },
+  "homepage": "https://github.com/ChapelR/noble-avatar-js#readme"
+}
