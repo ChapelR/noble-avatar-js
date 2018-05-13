@@ -1,13 +1,32 @@
 (function () {
     
+    function setCompEv (action, group, gender, component, old) {
+        // this event is used to change the image dynamically
+        $(document).trigger({
+            type : ':set-slot',
+            action : action,
+            group : group,
+            gender : gender,
+            component : component,
+            previous : old
+        });
+    }
+    
+    function mapComponents (group, gender) {
+        var comps = Noble.components[group].components[gender],
+            dir = Noble.components[group].dir[gender];
+        return comps.map( function (comp) {
+            return dir + comp;
+        });
+    }
     function getUnisexComponents (group) {
-        return Noble.components[group].u;
+        return mapComponents(group, 'u');
     }
     function getFemaleComponents (group) {
-        return Noble.components[group].f;
+        return mapComponents(group, 'f');
     }
     function getMaleComponents (group) {
-        return Noble.components[group].m;
+        return mapComponents(group, 'm');
     }
     function isRequired (group) {
         return Noble.components[group].required;
@@ -17,18 +36,11 @@
         switch (gender) {
             case 'f':
                 return getUnisexComponents(group).concat(getFemaleComponents(group));
-                break;
             case 'm':
                 return getUnisexComponents(group).concat(getMaleComponents(group));
-                break;
-            case 'u':
             default:
                 return getUnisexComponents(group);
         }
-    }
-    
-    function canHave (group, gender) {
-        return slots[gender][group].has;
     }
     
     var slots = {
@@ -114,7 +126,7 @@
             hair : {
                 has : true,
                 component : '',
-                options : getComponents('hair', 'f')
+                options : getComponents('hair', 'm')
             },
             mouths : {
                 has : true,
@@ -130,16 +142,22 @@
         
     };
     
+    function canHave (group, gender) {
+        return slots[gender][group].has;
+    }
+    
     function unsetSlot (group, gender) {
         var cached = slots[gender][group].component;
+        setCompEv('unset', group, gender, '', cached);
         slots[gender][group].component = '';
         return cached;
     }
     
     function setSlot (group, gender, component) {
-        if (canHave(gender, group) && 
+        if (canHave(group, gender) && 
             slots[gender][group].options.includes(component)) {
             
+            setCompEv('set', group, gender, component, slots[gender][group].component);
             slots[gender][group].component = component;
             return component;
         }
@@ -147,7 +165,7 @@
     }
     
     function setRandomSlot (group, gender) {
-        if (!canHave(gender, group)) {
+        if (!canHave(group, gender)) {
             return unsetSlot(group, gender);
         }
         
@@ -174,6 +192,14 @@
         }
     }
     
+    function convertToDefObj (slots) {
+        var ret = {};
+        Object.keys(slots).forEach( function (key) {
+            ret[key] = slots[key].component;
+        });
+        return ret;
+    }
+    
     // send to global scope
     window.Noble.slots = {
         
@@ -181,7 +207,7 @@
             female : getFemaleComponents,
             male : getMaleComponents,
             unisex : getUnisexComponents
-        }
+        },
         
         female : slots.female,
         
@@ -198,8 +224,10 @@
         
         randomize : setRandomSlot,
         
-        randomizeAll : setAllRandom
+        randomizeAll : setAllRandom,
+        
+        convert : convertToDefObj
         
     };
     
-}();
+}());

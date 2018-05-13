@@ -50,3 +50,4 @@ node_modules/
 test/story-formats/
 build.bat
 test/tweego.exe
+test/
