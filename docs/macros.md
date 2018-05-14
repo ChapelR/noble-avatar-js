@@ -39,7 +39,7 @@ This macro creates a portrait of the avatar with the provided ID.
 
 ### The `<<ptlink>>` Macro
 
-**Syntax**: `<<pt avatarID [options]>><</ptlink>>`
+**Syntax**: `<<ptlink avatarID [options]>><</ptlink>>`
 
 This macro is the same as the `<<pt>>` macro, except that the portrait is rendered as a click-able link.  You can use this macro to run any kind of code on click, just like a `<<link>>` or `<<button>>`.
 
@@ -58,7 +58,8 @@ This macro is the same as the `<<pt>>` macro, except that the portrait is render
         Dialog.open();
     <</script>>
 <</ptlink>>
-
+```
+```
 /% Creating link that leads to a talk passage. %/
 <<ptlink 'jimmy'>>
     <<goto 'talk to jimmy'>>
@@ -80,7 +81,8 @@ This macro renders the avatar editor onto the page for the user to create an ava
 ```
 /% player character creation %/
 <<avatar 'player' 'next passage'>> 
-
+```
+```
 /% for the author to make static npc avatars %/
 <<avatar 'npcs' `passage()` true>> 
 ```
