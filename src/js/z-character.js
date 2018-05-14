@@ -18,7 +18,7 @@
     };
     
     Noble.Character.add = function (id, def) {
-        if (def['base'].hasOwnProperty('has')) {
+        if (def.base.hasOwnProperty('has')) {
             // this is a slots API object
             def = Noble.slots.convert(def);
         }
@@ -45,7 +45,7 @@
     
     Noble.Character.random = function (gender, id) {
         gender = gender || either('male', 'female');
-        id = id || 'rnd' + Math.random().toString(36).substring(7);
+        id = id || 'rnd-' + Math.random().toString(36).substring(7);
         Noble.slots.randomizeAll(gender);
         return Noble.Character.add(id, Noble.slots[gender]);
     };

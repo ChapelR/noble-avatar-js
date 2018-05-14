@@ -8,4 +8,6 @@ div.noble-wrapper {
 div.noble-wrapper div.layer {
     position: absolute;
     width: 100%; height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
 }

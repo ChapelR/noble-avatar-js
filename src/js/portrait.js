@@ -3,7 +3,7 @@
     var layerList = [ // the order is important
         'base',
         'eyes',
-        'mouth',
+        'mouths',
         'features',
         'glasses',
         'hair',
