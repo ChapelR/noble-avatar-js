@@ -4,14 +4,14 @@ Noble avatars is a drop-in character portrait generator for the SugarCube 2 stor
 Coming soon.
 
 ## Documentation
-* [Installation guide](docs/2-Installation.md)
-* [Usage guide](docs/3-Usage.md)
-* [Configuration options](docs/4-Config.md)
-* [Macros](docs/5-Macros.md)
-* [Avatar passages](docs/6-Avatar-Passages.md)
-* [JavaScript API](docs/7-JavaScript-API.md)
-* [CSS selectors reference](docs/8-CSS-Reference.md)
-* [Using custom components](docs/9-Customization.md)
+* [Installation guide](2-Installation.md)
+* [Usage guide](3-Usage.md)
+* [Configuration options](4-Config.md)
+* [Macros](5-Macros.md)
+* [Avatar passages](6-Avatar-Passages.md)
+* [JavaScript API](7-JavaScript-API.md)
+* [CSS selectors reference](8-CSS-Reference.md)
+* [Using custom components](9-Customization.md)
 
 ## Features
 * Allows for player-controlled custom character creation out of the box, using a simple macro. 

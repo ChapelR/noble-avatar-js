@@ -49,5 +49,8 @@ Temporary Items
 node_modules/
 test/story-formats/
 build.bat
+docs.bat
 test/tweego.exe
 test/
+_docs/
+docs/a-main-copy.md

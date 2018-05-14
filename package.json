@@ -19,8 +19,11 @@
     "gulp-rename": "^1.2.2",
     "jshint": "^2.9.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "markdown-folder-to-html": "^1.6.0"
+  },
   "scripts": {
+    "docs": "markdown-folder-to-html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
