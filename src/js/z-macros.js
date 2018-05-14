@@ -74,7 +74,7 @@ Macro.add('avatarmaker', {
             return this.error('No passage name "' + this.args[1] + '" could be found.');
         }
         
-        Noble.editor.start(this.output, this.args[0], this.args[1]);
+        Noble.editor.start(this.output, this.args[0], this.args[1], this.args[2]);
         
     }
 });

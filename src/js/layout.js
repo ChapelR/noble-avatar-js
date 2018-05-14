@@ -131,7 +131,7 @@
     
     // events
     
-    function addHandlers () {
+    function addHandlers (debug) {
         
         $('div#editor-window button#gender').ariaClick( function () {
             
@@ -154,16 +154,25 @@
             $('div.editor-content#' + id).addClass('selected');
         });
         
-        $('#editor-view .layer').on('dblclick', function () {
-            try {
-                var data = JSON.stringify(Noble.slots.convert(Noble.slots[Noble.editor.gender]));
-                Dialog.setup('Character Data', 'editor-data-out');
-                Dialog.wiki('<textarea>' + data + '</textarea>');
-                Dialog.open();
-            } catch (err) {
-                console.error(err);
-            }
-        });
+        if (debug) {
+            $('#editor-view .layer').ariaClick(function () {
+                try {
+                    var data = JSON.stringify(Noble.slots.convert(Noble.slots[Noble.editor.gender]));
+                    Dialog.setup('Character Data', 'editor-data-out');
+                    Dialog.wiki('<textarea id="data-out">' + data + '</textarea>\n\n' + 
+                                "<<button 'Select All'>>" + 
+                                    "<<run $('#data-out').select()>>" + 
+                                "<</button>>" + 
+                                "<<button 'Copy to Clipboard'>>" + 
+                                    "<<run $('#data-out').select()>>" + 
+                                    "<<run document.execCommand('copy')>>" + 
+                                "<</button>>");
+                    Dialog.open();
+                } catch (err) {
+                    console.error(err);
+                }
+            });
+        }
         
         $(document).on(':editor-confirm', function (ev) {
             Noble.Character.add(ev.id, Noble.slots.convert(Noble.slots[Noble.editor.gender]));
@@ -173,12 +182,12 @@
     
     // start up editor
     
-    function initEditor (target, id, psg) {
+    function initEditor (target, id, psg, debug) {
         $(target).append($editor);
         $editor.height($editor.width());
         updateEditor();
         createConfirmBtn(id, psg);
-        addHandlers();
+        addHandlers(debug);
     }
     
     Noble.editor.start = initEditor;
@@ -186,5 +195,6 @@
     Noble.editor.content = populateEditor;
     Noble.editor.portrait = updatePt;
     Noble.editor.$el = $editor;
+    Noble.editor.handlers = addHandlers;
     
 }());

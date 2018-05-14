@@ -8,14 +8,14 @@ Coming soon.
 * [Usage guide](docs/usage.md)
 * [Configuration options](docs/config.md)
 * [Macros](docs/macros.md)
-* [Character passages](docs/passages.md)
+* [Avatar passages](docs/passages.md)
 * [JavaScript API](docs/js-api.md)
 * [CSS selectors reference](docs/css-ref.md)
 * [Using custom components](docs/customization.md)
 
 ## Features
 * Allows for player-controlled custom character creation out of the box, using a simple macro. 
-* Portraits can be made clickable and used like <<link>> macros for things like initiating conversations or seeing character descriptions. 
+* Portraits can be made clickable and used like `<link>>` macros for things like initiating conversations or seeing character descriptions. 
 * Can be used to generate random and predefined character portraits for all your character-generating needs, using a simple, passage and macro-based API. 
 * 15 trillion + combinations (supposedly, didn't do the math myself). 
 * Includes a bevy of customization options and configuration settings. 

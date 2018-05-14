@@ -10,34 +10,34 @@ div.noble-wrapper.left {
 div.noble-wrapper.flat {
     border: none;
 }
-div.noble-wrapper.material-light {
+div.noble-wrapper.material.invert {
     box-shadow: 0px 0px 2px #888;
 }
-div.noble-wrapper.material-dark {
+div.noble-wrapper.material {
     box-shadow: 0px 0px 2px #000;
 }
-div.noble-wrapper.border-thin-light {
+div.noble-wrapper.border-thin.invert {
     border: 2px solid #111;
 }
-div.noble-wrapper.border-thin-dark {
+div.noble-wrapper.border-thin {
     border: 2px solid #eee;
 }
-div.noble-wrapper.border-thick-light {
+div.noble-wrapper.border-thick.invert {
     border: 6px solid #111;
 }
-div.noble-wrapper.border-thick-dark {
+div.noble-wrapper.border-thick {
     border: 6px solid #eee;
 }
-div.noble-wrapper.border-outset-light {
+div.noble-wrapper.border-outset.invert {
     border: 6px outset #555;
 }
-div.noble-wrapper.border-outset-dark {
+div.noble-wrapper.border-outset {
     border: 6px outset #ccc;
 }
-div.noble-wrapper.border-inset-light {
+div.noble-wrapper.border-inset.invert {
     border: 6px inset #555;
 }
-div.noble-wrapper.border-inset-dark {
+div.noble-wrapper.border-inset {
     border: 6px inset #ccc;
 }
 
@@ -54,7 +54,7 @@ div.noble-wrapper.medium {
 div.noble-wrapper.large {
     width: 320px; height: 320px;
 }
-div.noble-wrapper.max-safe {
+div.noble-wrapper.max-safe, div.noble-wrapper.very-large {
     width: 400px; height: 400px;
 }
 div.noble-wrapper.oversized {
@@ -66,19 +66,19 @@ div.noble-wrapper.relative {
     max-width: 400px; 
     max-height: 400px;
 }
-div.noble-wrapper.relative.small-em {
+div.noble-wrapper.relative.small {
     max-width: 4rem; 
     max-height: 4rem;
 }
-div.noble-wrapper.relative.medium-em {
+div.noble-wrapper.relative.medium {
     max-width: 8rem; 
     max-height: 8rem;
 }
-div.noble-wrapper.relative.large-em {
+div.noble-wrapper.relative.large {
     max-width: 12rem; 
     max-height: 12rem;
 }
-div.noble-wrapper.relative.very-large-em {
+div.noble-wrapper.relative.very-large {
     max-width: 16rem; 
     max-height: 16rem;
 }

@@ -34,7 +34,7 @@
                     
         */
         portraitPassages : {
-            tag : 'portrait',
+            tag : 'avatar',
             onStartup : true
         },
         
