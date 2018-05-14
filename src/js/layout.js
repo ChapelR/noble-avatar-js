@@ -62,6 +62,7 @@
                     id : id,
                     passage : psg
                 });
+                $(this).remove();
             }).appendTo($editor);
     }
     
@@ -185,9 +186,12 @@
     function initEditor (target, id, psg, debug) {
         $(target).append($editor);
         $editor.height($editor.width());
-        updateEditor();
-        createConfirmBtn(id, psg);
-        addHandlers(debug);
+        postdisplay['editor-init'] = function (t) {
+            delete postdisplay[t];
+            updateEditor();
+            createConfirmBtn(id, psg);
+            addHandlers(debug);
+        };
     }
     
     Noble.editor.start = initEditor;

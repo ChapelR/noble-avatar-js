@@ -25,11 +25,16 @@
                     .addClass('layer')
                     .attr('data-group', group)
                     .css('background-image', bg);
-                if (clickableContent.trim() && i === arr.length - 1) {
+                if (clickableContent && 
+                    typeof clickableContent === 'string' && 
+                    clickableContent.trim() && 
+                    i === arr.length - 1) {
+                    
                     $wrapper.ariaClick( function () {
                         $.wiki(clickableContent);
-                    });
+                    }).css('cursor', 'pointer');
                 }
+                return lay;
             });
             
             $wrapper.append($layers);

@@ -1,1 +1,3 @@
 ## JavaScript API
+
+*Coming soon.*

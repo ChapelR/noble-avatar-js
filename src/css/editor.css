@@ -21,6 +21,7 @@ img.editor-option {
     float: left;
     background-color: #eee;
     border: 2px solid #888;
+    cursor: pointer;
 }
 
 div.editor-content {

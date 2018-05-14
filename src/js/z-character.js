@@ -83,7 +83,7 @@
             psgs = Story.lookup('tags', tag);
         
         psgs.forEach( function (psg) {
-            Noble.Character.generateFromPassage(psg);
+            Noble.Character.generateFromPassage(psg.title);
         });
     }
     

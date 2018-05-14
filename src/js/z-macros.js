@@ -19,7 +19,7 @@ Macro.add('pt', {
         }
         
         var pt = Noble.Portrait(ch.id, ch.def);
-        pt.$el.removeClass();
+        pt.$el.removeClass().addClass('noble-wrapper');
         if (this.args.length > 0) {
             var classes = this.args.slice(1).flatten();
             pt.$el.addClass(classes.join(' '));
@@ -52,7 +52,7 @@ Macro.add('ptlink', {
         }
         
         var pt = Noble.Portrait(ch.id, ch.def, this.payload[0].contents);
-        pt.$el.removeClass();
+        pt.$el.removeClass().addClass('noble-wrapper');
         if (this.args.length > 0) {
             var classes = this.args.slice(1).flatten();
             pt.$el.addClass(classes.join(' '));
