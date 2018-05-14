@@ -1,7 +1,8 @@
 Noble avatars is a drop-in character portrait generator for the SugarCube 2 story format of Twine. It was built using resources that were generously open-sourced by [Noble Master Games](http://www.noblemaster.com). All the code was written from the ground up in JavaScript to work with SugarCube. 
 
 ## Downloads
-Coming soon.
+* [From Google Drive.](https://drive.google.com/file/d/1rCXShwoD3teElwwgheosZyYeUREfjtnB/view?usp=sharing)
+* [From GitHub](https://github.com/ChapelR/holy-land-demo/raw/master/noble-avatar/noble-avatars.zip)
 
 ## Documentation
 * [Installation guide](docs/2-Installation.md)
