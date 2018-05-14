@@ -305,4 +305,8 @@
     }
 };
     
+    if (Noble.config && Noble.config.cache) {
+        Noble.cache.cacheAll();
+    }
+    
 }());

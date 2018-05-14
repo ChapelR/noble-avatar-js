@@ -19,20 +19,18 @@
                 .addClass('noble-wrapper')
                 .attr('id', Util.slugify(id));
             
-            var $layers = layerList.map( function (group) {
+            var $layers = layerList.map( function (group, i, arr) {
                 var bg = (def[group]) ? ('url("' + def[group] + '")') : '';
-                console.log(bg, def[group], def);
-                return $(document.createElement('div'))
+                var lay = $(document.createElement('div'))
                     .addClass('layer')
                     .attr('data-group', group)
                     .css('background-image', bg);
+                if (clickableContent.trim() && i === arr.length - 1) {
+                    $wrapper.ariaClick( function () {
+                        $.wiki(clickableContent);
+                    });
+                }
             });
-            
-            if (clickableContent) {
-                $wrapper.ariaClick( function () {
-                    $.wiki(clickableContent);
-                });
-            }
             
             $wrapper.append($layers);
             

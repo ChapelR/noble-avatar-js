@@ -16,6 +16,7 @@
     }
     
     function getGroupName (group) {
+        return Noble.config.defaultStrings.groupNames[group];
     }
     
     var struct = '<div id="editor-view"></div>' + 

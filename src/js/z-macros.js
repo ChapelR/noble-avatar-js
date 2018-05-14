@@ -51,18 +51,11 @@ Macro.add('ptlink', {
             return this.error('Could not find character with the ID: "' + this.args[0] + '".');
         }
         
-        var pt = Noble.Portrait(ch.id, ch.def);
+        var pt = Noble.Portrait(ch.id, ch.def, this.payload[0].contents);
         pt.$el.removeClass();
         if (this.args.length > 0) {
             var classes = this.args.slice(1).flatten();
             pt.$el.addClass(classes.join(' '));
-        }
-        
-        if (this.payload[0].contents.trim()) {
-            pt.$layers[ $pt.$layers.length - 1 ]
-                .ariaClick( function () {
-                    $.wiki(this.payload[0].contents);
-                });
         }
         
         $(this.output).append(pt.$el);

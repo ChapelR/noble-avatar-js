@@ -1,63 +1,67 @@
 (function () {
-    /**
-     * imageCache.js - image caching framework.
-     * Zoltan Hawryluk - http://www.useragentman.com/
-     * MIT License.
-     */
-
-    var imageCache = function () {
-        var me = this;
-        
-        var cache = [];
-        var root = document.location.href.split('/');
-        
-        root.pop();
-        root = root.join('/') + '/';
-        
-        me.push = function (src, loadEvent) {
-            
-            if (!src.match(/^http/)) {
-                src = root + src;
-            } 
-            
-            var item = new Image();
-            
-            
-            if (cache[src] && loadEvent) {
-                loadEvent(src);
-            } else {
-                if (loadEvent) {
-                    item.onload = loadEvent;
-                    item.onerror = loadEvent;
-                }
-                cache[src]=item;
-            }
-            
-            item.src =  src;
-        };
-        
-        me.pushArray = function (array, imageLoadEvent, imagesLoadEvent) {
-            var numLoaded = 0;
-            var arrayLength = array.length;
-            for (var i=0; i<arrayLength; i++) {
-                me.push(array[i], function (e) {
-                    if (imageLoadEvent) {
-                        imageLoadEvent(e);
-                    }
-                    numLoaded++;
-                    if (numLoaded == arrayLength) {
-                        setTimeout(function () {
-                            imagesLoadEvent(e);
-                        }, 1);
-                        
-                    }
-                });
-            }
-        };
-        
-    };
     
     window.Noble = window.Noble || {};
     
-    window.Noble.cache = imageCache;
+    function imgCache (array, cb, finalcb) {
+        
+        var imgs = array || null, list = [];
+        
+        if (imgs) {
+            var i, lt = imgs.length;
+            for (i = 0; i < lt; i++) {
+                var img = new Image();
+                img.onload = function () {
+                    var idx = list.indexOf(this);
+                    if (idx !== -1) {
+                        list.deleteAt(idx);
+                    }
+                };
+                list.push(img);
+                img.src = imgs[i];
+            }
+        }
+        
+    }
+    
+    function fetchUrls (group) {
+        console.log(group);
+        var u = group.components.u.map(function (file) {
+            return group.dir.u + file;
+        });
+        var f = group.components.f.map(function (file) {
+            return group.dir.f + file;
+        });
+        var m = group.components.m.map(function (file) {
+            return group.dir.m + file;
+        });
+        return u.concat(f, m);
+    }
+    
+    function fetchAllCompUrls (obj) {
+        console.log(obj);
+        obj = obj || Noble.components || null;
+        if (obj) {
+            var groups = Object.keys(obj);
+            return groups.map( function (group) {
+                return fetchUrls(obj[group]);
+            }).flatten();
+        }
+    }
+    
+    function cacheAll (urls, cb) {
+        urls = urls || fetchAllCompUrls(Noble.components) || null;
+        console.log(urls);
+        if (urls) {
+            imgCache(urls);
+        }
+        if (cb && typeof cb === 'function') {
+            cb();
+        }
+    }
+    
+    window.Noble.cache = {
+        cacheAll : cacheAll,
+        fetchUrls : fetchAllCompUrls,
+        cacher : imgCache
+    };
 }());
