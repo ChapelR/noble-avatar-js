@@ -4,21 +4,35 @@
     
     // html structure
     
+    function swapGenderText (gender) {
+        if (Noble.config.defaultStrings.swapGender.both) {
+            return Noble.config.defaultStrings.swapGender.both;
+        }
+        return Noble.config.defaultStrings.swapGender[gender];
+    }
+    
+    function confirmText () {
+        return Noble.config.defaultStrings.confirmBtn;
+    }
+    
+    function getGroupName (group) {
+    }
+    
     var struct = '<div id="editor-view"></div>' + 
     '<div id="editor-window">' + 
         '<div id="editor-header">' + 
             '<select id="editor-window" tab-index="0">' + 
-                '<option value="base">Skin</option>' + 
-                '<option value="eyes">Eyes</option>' + 
-                '<option value="mouths">Mouth</option>' + 
-                '<option value="hair">Hair</option>' + 
-                '<option value="beard">Beard</option>' + 
-                '<option value="features">Features</option>' + 
-                '<option value="glasses">Glasses</option>' + 
-                '<option value="neck">Neck</option>' + 
-                '<option value="accessories">Hat</option>' + 
+                '<option value="base">' + getGroupName('base') + '</option>' + 
+                '<option value="eyes">' + getGroupName('eyes') + '</option>' + 
+                '<option value="mouths">' + getGroupName('mouths') + '</option>' + 
+                '<option value="hair">' + getGroupName('hair') + '</option>' + 
+                '<option value="beard">' + getGroupName('beard') + '</option>' + 
+                '<option value="features">' + getGroupName('features') + '</option>' + 
+                '<option value="glasses">' + getGroupName('glasses') + '</option>' + 
+                '<option value="neck">' + getGroupName('neck') + '</option>' + 
+                '<option value="accessories">' + getGroupName('accessories') + '</option>' + 
             '</select>' + 
-            '<button id="gender" tab-index="0">Change to Male</button>' +
+            '<button id="gender" tab-index="0">' + swapGenderText('female') + '</button>' +
         '</div>' + 
         '<div id="editor-window-wrapper">' +
             '<div class="editor-content selected" id="base"></div>' + 
@@ -40,7 +54,7 @@
     function createConfirmBtn (id, psg) {
         var $confirm = $(document.createElement('button'))
             .attr('id', 'editor-button-confirm')
-            .wiki('Confirm')
+            .wiki(confirmText())
             .ariaClick( function () {
                 $(document).trigger({
                     type : ':editor-confirm',
@@ -120,7 +134,7 @@
         
         $('div#editor-window button#gender').ariaClick( function () {
             
-            $(this).empty().wiki('Change to ' + Noble.editor.gender.toUpperFirst());
+            $(this).empty().wiki(swapGenderText(Noble.editor.gender));
             
             if (Noble.editor.gender === 'female') {
                 Noble.editor.gender = 'male';

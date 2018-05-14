@@ -32,8 +32,7 @@
             var def = JSON.parse(Story.get(psg).text);
             Noble.Character.add(psg, def);
         } catch (err) {
-            // todo
-            console.error('uh oh');
+            console.error(err.message);
         }
     };
     
@@ -78,5 +77,14 @@
         }
         
     };
+    
+    if (Noble.config.portraitPassages && Noble.config.portraitPassages.onStartup) {
+        var tag = Noble.config.portraitPassages.tag,
+            psgs = Story.lookup('tags', tag);
+        
+        psgs.forEach( function (psg) {
+            Noble.Character.generateFromPassage(psg);
+        });
+    }
     
 }());

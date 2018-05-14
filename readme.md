@@ -1,4 +1,4 @@
-Noble avatars is a drop-in character portrait generator for the SugarCube 2 story format of Twine. If there's interest, I may port it to Harlowe v2.x in the future. Noble avatars is built using resources that were generously open-sourced by X. All the code was written from the ground up in JavaScript to work with SugarCube. 
+Noble avatars is a drop-in character portrait generator for the SugarCube 2 story format of Twine. It was built using resources that were generously open-sourced by [Noble Master Games](http://www.noblemaster.com). All the code was written from the ground up in JavaScript to work with SugarCube. 
 
 ## Downloads
 Coming soon.

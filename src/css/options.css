@@ -1,3 +1,11 @@
+/* floats */
+div.noble-wrapper.right {
+    float: right;
+}
+div.noble-wrapper.left {
+    float: left;
+}
+
 /* outside styling */
 div.noble-wrapper.flat {
     border: none;
