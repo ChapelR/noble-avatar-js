@@ -48,11 +48,13 @@
         '</div>' + 
     '</div>';
     
-    var $editor = $(document.createElement('div'))
-        .addClass('editor-wrapper')
-        .append(struct);
+    function buildEditor () {
+        return $(document.createElement('div'))
+            .addClass('editor-wrapper')
+            .append(struct);
+    }
     
-    function createConfirmBtn (id, psg) {
+    function createConfirmBtn ($el, id, psg) {
         var $confirm = $(document.createElement('button'))
             .attr('id', 'editor-button-confirm')
             .wiki(confirmText())
@@ -63,7 +65,7 @@
                     passage : psg
                 });
                 $(this).remove();
-            }).appendTo($editor);
+            }).appendTo($el);
     }
     
     // general start up / restart functions
@@ -184,12 +186,13 @@
     // start up editor
     
     function initEditor (target, id, psg, debug) {
+        var $editor = buildEditor();
         $(target).append($editor);
         $editor.height($editor.width());
         postdisplay['editor-init'] = function (t) {
             delete postdisplay[t];
             updateEditor();
-            createConfirmBtn(id, psg);
+            createConfirmBtn($editor, id, psg);
             addHandlers(debug);
         };
     }
@@ -198,7 +201,7 @@
     Noble.editor.update = updateEditor;
     Noble.editor.content = populateEditor;
     Noble.editor.portrait = updatePt;
-    Noble.editor.$el = $editor;
+    Noble.editor.build = buildEditor;
     Noble.editor.handlers = addHandlers;
     
 }());
