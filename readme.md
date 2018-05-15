@@ -39,10 +39,10 @@ Noble avatars is a drop-in character portrait generator for the SugarCube 2 stor
 * Unfortunately, Noble Avatars uses totally different assets for the base male and female options, meaning that gender selection is completely binary and required. 
 * Right now, there's no way to tag certain creation options (outside gender restrictions and required-ness, i.e. all characters require eyes), meaning character portraits that are generated randomly are completely random by default, though you can use the API to supply only certain options to certain randomized characters, but this is labor-intensive. 
 
-## Legal info
+## Licensing info
 This code is licensed under MIT.  See the license for more.  In general, you must provide attribution to me (Chapel) in addition to including the info from the credits section somewhere in your game, like an about page.  It does not need to be particularly prominent. Please avoid implying that any of the individuals, myself included, directly worked on or endorsed your project.
 
 ## Credits
-[Avatar graphics created by Noble Master Games](http://www.noblemaster.com)
-[Avatar graphics designed by Mei-Li Nieuwland](http://liea.deviantart.com)
+[Avatar graphics created by Noble Master Games](http://www.noblemaster.com)  
+[Avatar graphics designed by Mei-Li Nieuwland](http://liea.deviantart.com)  
 Noble Avatar Graphics licensed under [CC-BY-3.0](https://creativecommons.org/licenses/by/3.0/legalcode)

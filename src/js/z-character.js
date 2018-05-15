@@ -42,7 +42,7 @@
         }); 
     };
     
-    Noble.Character.random = function (gender, id) {
+    Noble.Character.random = function (id, gender) {
         gender = gender || either('male', 'female');
         id = id || 'rnd-' + Math.random().toString(36).substring(7);
         Noble.slots.randomizeAll(gender);

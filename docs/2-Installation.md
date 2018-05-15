@@ -2,7 +2,17 @@
 
 ### Part 1: Get the files.
 
-Download the files, or grab the `dist/` directory of this repo.  You need the `cac` folder with all it's images, and the `noble.min.css` and `noble.min.js` files.  You can also download an html version of the documentation from [coming soon] or [coming soon].
+Download the files, or grab the `dist/` directory of this repo.  You need the `cac` folder with all it's images, and the `noble.min.css` and `noble.min.js` files.  You can also download an html version of the documentation for offline use.
+
+Download the files:
+* [From Google Drive](https://drive.google.com/open?id=1rCXShwoD3teElwwgheosZyYeUREfjtnB)
+* [From GitHub](https://github.com/ChapelR/holy-land-demo/raw/master/noble-avatar/noble-avatars.zip)
+* [From HolyLandGame.com](http://holylandgame.com/noble-avatar/noble-avatars.zip)
+
+Download the docs:
+* [From Google Drive](https://drive.google.com/open?id=1U27wuSrZjXOr1-Jcu5clgqKEM2aYsddr)
+* [From GitHub](https://github.com/ChapelR/holy-land-demo/raw/master/noble-avatar/noble-avatars.docs.zip)
+* [From HolyLandGame.com](http://holylandgame.com/noble-avatar/noble-avatars.docs.zip)
 
 ### Part 2: Place the `cac` folder.
 

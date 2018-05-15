@@ -59,12 +59,20 @@
             .attr('id', 'editor-button-confirm')
             .wiki(confirmText())
             .ariaClick( function () {
+                
                 $(document).trigger({
                     type : ':editor-confirm',
                     id : id,
                     passage : psg
                 });
+                
+                Noble.editor.madeChanges = {
+                    male : false,
+                    female : false
+                }
+                
                 $(this).remove();
+                
             }).appendTo($el);
     }
     
@@ -138,13 +146,13 @@
         
         $('div#editor-window button#gender').ariaClick( function () {
             
-            $(this).empty().wiki(swapGenderText(Noble.editor.gender));
-            
             if (Noble.editor.gender === 'female') {
                 Noble.editor.gender = 'male';
             } else {
                 Noble.editor.gender = 'female';
             }
+            
+            $(this).empty().wiki(swapGenderText(Noble.editor.gender));
             
             updateEditor();
             
@@ -201,6 +209,7 @@
     Noble.editor.update = updateEditor;
     Noble.editor.content = populateEditor;
     Noble.editor.portrait = updatePt;
+    Noble.editor.confirmBtn = createConfirmBtn;
     Noble.editor.build = buildEditor;
     Noble.editor.handlers = addHandlers;
     

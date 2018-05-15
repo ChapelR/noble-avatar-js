@@ -1,14 +1,11 @@
 ## CSS Selectors Reference
 
-* [Portrait](#portrait-css)
-* [Editor](#the-editor)
-
 ### Portrait CSS
 
 `div.noble-wrapper` is the container element onto which the png layers of each image are layered.  To change the size or position of the image, you'll want to use this selector.  Each portrait further has a number of individual layers, each one uses the `div.noble-wrapper div.layer` selector.  The images are laid in order, meaning we don't use z-index to order them.  In general, there should be any reason to mess with the layers as doing so could cause them to fail to lay properly.
 
 The basic portrait CSS looks like this:
-```
+```css
 div.noble-wrapper {
     position: relative;
     width: 400px;
@@ -26,7 +23,7 @@ div.noble-wrapper div.layer {
 Additionally, the portraits accept various options, which are each converted to classes by the `<<pt>>` and `<<ptlink>>` macros.
 
 These classes have the following CSS:
-```
+```css
 /* floats */
 div.noble-wrapper.right {
     float: right;
@@ -116,7 +113,7 @@ div.noble-wrapper.relative.very-large {
 ### The Editor
 
 The avatar editor's HTML structure looks like this:
-```
+```html
 <div id="editor-wrapper">
     <div id="editor-view">
         <!-- PORTRAIT (see above) -->
@@ -154,7 +151,7 @@ The avatar editor's HTML structure looks like this:
 
 And the editor's default CSS:
 
-```
+```css
 div#editor-view {
     width: 49%;
     height: 250px;
@@ -190,5 +187,25 @@ div.editor-content.selected {
 button#editor-button-confirm {
     width: 99%;
     margin: 2em 0;
+}
+```
+
+### Responsive Rules
+
+The following CSS adds a bit of responsiveness to the editor:
+```css
+@media only screen and (max-width: 600px) {
+    div#editor-view {
+        width: 100%;
+        margin: 1em 0;
+    }
+    div#editor-view div.noble-wrapper {
+        height: 100%;
+        width: unset;
+        margin: auto;
+    }
+    div#editor-window-wrapper {
+        width: 100%;
+    }
 }
 ```
