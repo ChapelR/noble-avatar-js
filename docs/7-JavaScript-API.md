@@ -29,7 +29,7 @@ Noble.components = {
 }
 ```
 
-Each group name represents a single slot on the character, like hair, mouths, eyes, etc.  In the `components` object, tree arrays of file names are stored--one for unisex items (`u`), one for female items (`f`), and one for male items (`m`).  The `required` boolean value simply lets the system know 1) not to generate a random portrait without something in this slot, and 2) not to give the player the option to have nothing in this slot in the editor.  Theoretically, you could edit this option to make anything required or not required for any group.
+Each group name represents a single slot on the character, like hair, mouths, eyes, etc.  In the `components` object, three arrays of file names are stored--one for unisex items (`u`), one for female items (`f`), and one for male items (`m`).  The `required` boolean value simply lets the system know 1) not to generate a random portrait without something in this slot, and 2) not to give the player the option to have nothing in this slot in the editor.  You could edit this option to make anything required or not required for any group.
 
 If you want to use your own custom components, you'll need to spend some time editing this object, or rebuilding it.  Check out the [guide](9-Customization.md) for more.
 
@@ -61,6 +61,8 @@ Like with components, each `groupName` represents a single item slot; eyes, mout
 
 The `Noble.slots` object has the following methods.
 
+---
+
 #### `Noble.slots.check.required(groupName)`
 
 Returns whether the passed `groupName` is required.
@@ -75,6 +77,8 @@ Examples:
 Noble.slots.check.required('hair'); // false
 Noble.slots.check.required('eyes'); // true
 ```
+
+---
 
 #### `Noble.slots.check.possible(groupName, gender)`
 
@@ -92,6 +96,8 @@ Noble.slots.check.possible('hair', 'male'); // true
 Noble.slots.check.possible('beard', 'female'); // false
 ```
 
+---
+
 #### `Noble.slots.set(groupName, gender, component)`
 
 This method places or replaces a given component on the relevant slots object.
@@ -108,6 +114,8 @@ Examples:
 Noble.slots.set('hair', 'female', './cac/hair/f/hair_f5.png');
 ```
 
+---
+
 #### `Noble.slots.unset(groupName, gender)`
 
 This method replaces the component value with an empty string for the gender object indicated.
@@ -122,6 +130,8 @@ Examples:
 ```javascript
 Noble.slots.unset('hair', 'female');
 ```
+
+---
 
 #### `Noble.slots.randomize(groupName, gender)`
 
@@ -138,11 +148,13 @@ Examples:
 Noble.slots.randomize('hair', 'female');
 ```
 
+---
+
 #### `Noble.slots.randomizeAll(gender)`
 
 Takes the indicated gender object and randomizes all it's slots. Useful for generating random characters.
 
-Returns: undefined
+Returns: `undefined`
 
 Arguments:
 * gender (string): `'male'` or `'female'`.
@@ -151,6 +163,8 @@ Examples:
 ```javascript
 Noble.slots.randomizeAll('female');
 ```
+
+---
 
 #### `Noble.slots.convert(slotsObj)`
 
@@ -167,6 +181,8 @@ var ch = Noble.slots.convert(Noble.slots.female);
 new Noble.Character('sally', ch);
 ```
 
+---
+
 ## `Noble.Character`
 
 `Noble.Character` is a constructor function for making character instances.  In most cases, however, you'll want to call `Noble.Character.add()` to make your character instances, as this function will add the necessary plumbing to make your character available to the system without needing to assign it to a variable.
@@ -177,9 +193,11 @@ Instances of `Noble.Character` have the following properties.
 
 ### Static Methods
 
+---
+
 #### `Noble.Character.add(id, definitionOrSlotsObj)`
 
-This method creates a new `Noble.Character` instance and pushed it into the story variable array (see [the configuration options](4-Config.md)).  It will also automatically convert slots objects to definition objects via `Noble.slots.convert` when needed.
+This method creates a new `Noble.Character` instance and pushes it into the story variable array (see [the configuration options](4-Config.md)).  It will also automatically convert slots objects to definition objects via `Noble.slots.convert` when needed.
 
 Returns: a new Noble.Character instance.
 
@@ -191,6 +209,8 @@ Example:
 ```javascript
 Noble.Character.add('sally', Noble.slots.female);
 ```
+
+---
 
 #### `Noble.Character.is(thing)`
 
@@ -214,6 +234,8 @@ Noble.Character.is(Noble.slots.male); // false
 Noble.Character.is(ch); // true
 ```
 
+---
+
 #### `Noble.Character.generateFromPassage(passageName)`
 
 Attempts to pull avatar data from the indicated passage. If it is a valid [avatar passage](6-Avatar-Passage.md), a new `Noble.Character` instance is created, and the passage's name is used as the id.
@@ -228,6 +250,8 @@ Example:
 Noble.Character.generateFromPassage('my avatar passage');
 ```
 
+---
+
 #### `Noble.Character.getByID(id)`
 
 Searches the story variable array for the `Noble.Character` instance with the given id.
@@ -241,6 +265,8 @@ Example:
 ```javascript
 var ch = Noble.Character.getByID('sally');
 ```
+
+---
 
 #### `Noble.Character.random(id [, gender])`
 
@@ -259,7 +285,11 @@ Example:
 var ch = Noble.Character.getByID('sally');
 ```
 
+---
+
 ### Instance methods
+
+---
 
 #### `<character>.portrait()`
 
@@ -276,6 +306,8 @@ var ptSally = chSally.portrait();
 ptSally.$el.appendTo('#passages');
 ```
 
+---
+
 #### `<character>.clickablePt([wikiCode])`
 
 This method is similar to the above, but generates a clickable portrait.  The provided wiki code is run on click.
@@ -283,7 +315,7 @@ This method is similar to the above, but generates a clickable portrait.  The pr
 Returns: a new, clickable `Noble.Portrait` instance generated from the `Noble.Character` instance.
 
 Arguments:
-* wikiCode (string): a string of valid TwineScript code.
+* wikiCode (string) (optional): a string of valid TwineScript code.
 
 Example:
 ```javascript
@@ -294,6 +326,8 @@ var ptSally = chSally.clickablePt('<<run UI.alert("hello")>>');
 ptSally.$el.appendTo('#passages');
 // when the portrait is clicked, the code will run
 ```
+
+---
 
 ## `Noble.Portrait`
 
@@ -309,6 +343,8 @@ Each `Noble.Portrait` instance has these properties:
 
 ### Instance Methods
 
+---
+
 #### `<portrait>.getLayer(groupName)`
 
 This method returns the jQuery element from the `<portrait>.$layers` array that corresponds to the component group requested, or undefined, if it cannot be found.
@@ -317,6 +353,8 @@ Returns: a jQuery element or `undefined`.
 
 Arguments:
 * groupName (string): the name of a component group.
+
+---
 
 #### `<portrait>.getLayerIdx(groupName)`
 
@@ -327,6 +365,8 @@ Returns: integer (array index or -1)
 Arguments:
 * groupName (string): the name of a component group.
 
+---
+
 #### `<portrait>.changeLayer(groupName, component)`
 
 This layer gets the indicated jQuery layer element and changes its background image to the provided component URL.  This does not alter or effect the underlying `Noble.Character` instance, only the visuals of the portrait element.
@@ -336,6 +376,8 @@ Returns: `undefined`
 Arguments:
 * groupName (string): the name of a component group.
 * component (string): the component URL to change the layer's image to.
+
+---
 
 ## `Noble.editor`
 
@@ -350,9 +392,11 @@ This interface has a few properties that may be of use to authors:
 
 ### Methods
 
+---
+
 #### `Noble.editor.start(target, id, passageName [, debug])`
 
-Starts up the editor and appends it to the target element.  This is used for the macro, but it requires passage transition to work properly.  If you need to call the editor as some other time, you can rebuild it using the other methods below.
+Starts up the editor and appends it to the target element.  This is used for the macro, but it requires passage transition to work properly.  If you need to call the editor at some other time, you can rebuild it using the other methods below.
 
 Returns: `undefined`
 
@@ -362,15 +406,23 @@ Arguments:
 * passageName (string): the name of the passage to navigate to when the player confirms their creation.
 * debug (boolean) (optional): providing a truthy argument starts the editor in debug mode, meaning clicking the portrait in the editor will display the avatar's JSON data for use in an [avatar passage](6-Avatar-Passages.md).
 
+---
+
 #### `Noble.editor.update()`
 
 This method updates the editor's entire display, and is used when the player swaps genders.
 
 Returns: `undefined`
 
+---
+
 #### `Noble.editor.content()`
 
 This method updates the editor's content window.  Only used on initialization or when gender is switched.
+
+Returns: `undefined`
+
+---
 
 #### `Noble.editor.portrait()`
 
@@ -378,20 +430,28 @@ This method updates the player's portrait when a component is selected.
 
 Returns: a `Noble.Portrait` instance
 
+---
+
 #### `Noble.editor.confirmBtn($el, id, passageName)`
 
 This method creates and appends the confirm button on the editor.
+
+Returns: `undefined`
 
 Arguments:
 * $el (jQuery object): the jQuery object to attach the button to; generally the editor.
 * id (string): the id of the avatar being created.
 * passageName (string): the name of the passage to navigate to when the player confirms their creation.
 
+---
+
 #### `Noble.editor.build()`
 
 Creates the editor interface and returns it as a jQuery element.
 
 Returns: a jQuery element referencing the editor.
+
+---
 
 #### `Noble.editor.handlers([debug])`
 
@@ -401,3 +461,5 @@ Returns: `undefined`
 
 Arguments:
 * debug (boolean) (optional): if truthy, adds the debug handlers. 
+
+---

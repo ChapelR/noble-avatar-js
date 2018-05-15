@@ -2,14 +2,14 @@
 
 ### The `<<pt>>` Macro
 
-**Syntax**: `<<pt avatarID [options]>>`
+**Syntax**: `<<pt avatarID [options] [classList]>>`
 
-This macro creates a portrait of the avatar with the provided ID.
+This macro creates a portrait of the avatar that is associated with the provided ID.
 
 **Arguments**:
 
 * **avatarID** (string): Each avatar has an ID.  If you're having the user create avatars, the ID is assigned as part of the `<<avatarmaker>>` macro call.  If you're instead importing avatars as passages using an `avatar`-tagged passage, then the ID is the name of the passage.
-* **options** (string | string array) (optional): You can supply a number of display options to your portrait, including borders, sizing, and floating. You can pass options as a list of space-separated quoted strings, a quoted list of space-separated strings, an array of strings, or any combination of these.  You should generally only pass one option for each group listed below.  If you don't pass any options: the image will not be floated, the image will be 400px by 400px, and the image will have no borders.  You can also edit the appearance of portraits in more detail using [CSS](css-ref.md).
+* **options** (string | string array) (optional): You can supply a number of display options to your portrait, including borders, sizing, and floating. You can pass options as a list of space-separated quoted strings, a quoted list of space-separated strings, an array of strings, or any combination of these.  You should generally only pass one option for each group listed below.  If you don't pass any options: the image will not be floated, the image will be 400px by 400px, and the image will have no borders.  You can also edit the appearance of portraits in more detail using [CSS](css-ref.md) or custom classes (see below).
   * float options (`'right'` or `'left'`): Floats the image to the indicated side of the screen.
   * sizing options (see list below): You can size the image using these options, using the keywords below.  You can also include the `'relative'` keyword with some of the following size options to make the images responsive.
     * `'tiny'`: 64px, no relative option.
@@ -25,21 +25,22 @@ This macro creates a portrait of the avatar with the provided ID.
     * `'border-thick'`: creates a 6px solid border around the portrait.
     * `'border-outset'`: creates an outset border around the portrait.
     * `'border-inset'`: creates an inset border around the portrait.
-
+* **classList** (string | string array) (optional): You can supply any number of custom classes to your portrait for styling. You can pass these classes as a list of space-separated quoted strings, a quoted list of space-separated strings, an array of strings, or any combination of these.
+    
 **Examples**:
 ```
 <<pt 'player'>>
 
 <<pt 'guard' 'relative' 'small'>>
 
-<<pt 'king' 'medium' 'invert' 'outset'>>
+<<pt 'king' 'medium' 'invert' 'border-outset'>>
 
-<<pt 'player' 'material'>>
+<<pt 'player' 'material' 'myCustomClass'>>
 ```
 
 ### The `<<ptlink>>` Macro
 
-**Syntax**: `<<ptlink avatarID [options]>><</ptlink>>`
+**Syntax**: `<<ptlink avatarID [options] [classList]>><</ptlink>>`
 
 This macro is the same as the `<<pt>>` macro, except that the portrait is rendered as a click-able link.  You can use this macro to run any kind of code on click, just like a `<<link>>` or `<<button>>`.
 
@@ -47,6 +48,7 @@ This macro is the same as the `<<pt>>` macro, except that the portrait is render
 
 * **avatarID** (string): Each avatar has an ID.  If you're having the user create avatars, the ID is assigned as part of the `<<avatarmaker>>` macro call.  If you're instead importing avatars as passages using an `avatar`-tagged passage, then the ID is the name of the passage.
 * **options** (string | string array) (optional): See the `<<pt>>` macro above.
+* **classList** (string | string array) (optional): You can supply any number of custom classes to your portrait for styling. You can pass these classes as a list of space-separated quoted strings, a quoted list of space-separated strings, an array of strings, or any combination of these.
 
 **Examples**:
 ```

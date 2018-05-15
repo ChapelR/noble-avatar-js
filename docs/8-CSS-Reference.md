@@ -2,7 +2,7 @@
 
 ### Portrait CSS
 
-`div.noble-wrapper` is the container element onto which the png layers of each image are layered.  To change the size or position of the image, you'll want to use this selector.  Each portrait further has a number of individual layers, each one uses the `div.noble-wrapper div.layer` selector.  The images are laid in order, meaning we don't use z-index to order them.  In general, there should be any reason to mess with the layers as doing so could cause them to fail to lay properly.
+`div.noble-wrapper` is the container element onto which the png layers of each image are layered.  To change the size or position of the image, you'll want to use this selector.  Each portrait further has a number of individual layers (9 in all), each of which uses the `div.noble-wrapper div.layer` selector.  The images are laid in order, meaning we don't use z-index to order them.  In general, there shouldn't be any reason to mess with the layers as doing so could cause them to fail to lay properly.
 
 The basic portrait CSS looks like this:
 ```css
@@ -193,6 +193,7 @@ button#editor-button-confirm {
 ### Responsive Rules
 
 The following CSS adds a bit of responsiveness to the editor:
+
 ```css
 @media only screen and (max-width: 600px) {
     div#editor-view {

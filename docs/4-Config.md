@@ -33,15 +33,15 @@ Noble.config = {
 These are the configuration options you can edit.
 
 ### The `cache` option.
-This option determines whether or not the image assets used by this system should be preloaded on startup.  If you allow them to preload, you can prevent a great deal of potential awkwardness, like images popping in layer-by-layer, or the editor hanging for a split second when the user makes a choice.  However, this forces your game to load before the loading screen is dismissed, meaning it can add to the game's initial load times, at least the first time a user plays your game.
+This option determines whether or not the image assets used by this system should be preloaded on startup.  If you allow them to preload, you can prevent a great deal of potential awkwardness, like images popping in layer-by-layer, or the editor hanging for a split second when the user makes a choice.  However, this means the assets will all load before the loading screen is dismissed, and it will add to the game's initial load times, at least the first time a user plays your game (on subsequent plays, the images will be cached, speeding load times).
 
-If you have a lot of other stuff preloading, and the initial load time is too long, it may be a good idea to shut this option off.
+If you have a lot of other stuff loading, and the initial load time feels too long, it may be a good idea to shut this option off.
 
 ### The `portraitPassages` options.
 There are two options here, `tag` and `onStartup`.  You can create an [avatar passage](#6-Avatar-Passages.md) by tagging any passage with the indicated tag.  By default, this tag is `avatar`.  If you already need that tag for something else, or if you just feel like changing it, you can change it using this option.  The `onStartup` option determines whether these avatar passages should be loaded at start up, or as you request them in your code.  Unless you have a whole lot of avatar passages and they seem to be slowing your initial load times, it's not recommended you shut this off.
 
 ### The `storyVar` option.
-This system creates a story variable (called `$nobleAvatars` by default) to store avatar data so it can be saved, loaded, undone, and redone along with your other stateful information.  If you already need the default variable for something else in your story, you can change this value to something else.  Be sure to start it with a $, or you may experience errors.
+This system creates a story variable (called `$nobleAvatars` by default) to store avatar data so it can be saved, loaded, undone, and redone along with your other stateful information.  If you already need the default variable for something else in your story, you can change this value to something else.  Be sure to start it with a story variable sigil (`$`), or you may experience errors.
 
 ### The `defaultStrings` options.
 These options allow you to change the strings used in the editor interface, either to translate them, or to make them match your world a bit better.
