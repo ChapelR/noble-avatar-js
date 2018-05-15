@@ -69,7 +69,7 @@
                 Noble.editor.madeChanges = {
                     male : false,
                     female : false
-                }
+                };
                 
                 $(this).remove();
                 
