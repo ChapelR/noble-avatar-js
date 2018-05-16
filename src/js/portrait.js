@@ -20,11 +20,16 @@
                 .attr('id', Util.slugify(id));
             
             var $layers = layerList.map( function (group, i, arr) {
-                var bg = (def[group]) ? ('url("' + def[group] + '")') : '';
-                var lay = $(document.createElement('div'))
+                var comp = (def[group]) || '';
+                var lay = $(document.createElement('img'))
                     .addClass('layer')
                     .attr('data-group', group)
-                    .css('background-image', bg);
+                    if (comp) {
+                        lay.attr('src', comp);
+                        lay.show();
+                    } else {
+                        lay.hide();
+                    }
                 if (clickableContent && 
                     typeof clickableContent === 'string' && 
                     clickableContent.trim() && 
@@ -71,7 +76,7 @@
         changeLayer : function (group, comp) {
             var lay = this.getLayer(group);
             if (lay[0]) {
-                lay.css('background-image', comp);
+                lay.attr('src', comp);
             }
         }
         
