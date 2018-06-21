@@ -30,7 +30,7 @@
     Noble.Character.generateFromPassage = function (psg) {
         try {
             var def = JSON.parse(Story.get(psg).text);
-            Noble.Character.add(psg, def);
+            return Noble.Character.add(psg, def);
         } catch (err) {
             console.error(err.message);
         }
@@ -42,11 +42,30 @@
         }); 
     };
     
-    Noble.Character.random = function (id, gender) {
-        gender = gender || either('male', 'female');
+    Noble.Character.random = function (id, opts) {
+        var gender = either('male', 'female');
+        if (opts && opts.gender && 
+            (opts.gender === 'male' || opts.gender === 'female')) {
+            
+            gender = opts.gender;
+            delete opts.gender;
+        }
         id = id || 'rnd-' + Math.random().toString(36).substring(7);
-        Noble.slots.randomizeAll(gender);
-        return Noble.Character.add(id, Noble.slots[gender]);
+        var ch = Noble.slots.convert(Noble.slots.randomizeAll(gender));
+        // assign options
+        var optionList = opts ? Object.keys(opts) : [];
+        if (optionList.length > 0) {
+            var slots = Object.keys(ch);
+            optionList.forEach( function (comp) {
+                if (slots.includes(comp) && comp !== 'id' && 
+                    Noble.slots.check.possible(comp, gender) && 
+                    Noble.slots[gender].options.includes(opts[comp])) {
+                    
+                    slots[comp] = opts[comp];
+                }
+            });
+        }
+        return Noble.Character.add(id, ch);
     };
     
     Noble.Character.test = function (gender) {

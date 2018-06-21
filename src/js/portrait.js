@@ -30,17 +30,17 @@
                     } else {
                         lay.hide();
                     }
-                if (clickableContent && 
-                    typeof clickableContent === 'string' && 
-                    clickableContent.trim() && 
-                    i === arr.length - 1) {
-                    
-                    $wrapper.ariaClick( function () {
-                        $.wiki(clickableContent);
-                    }).css('cursor', 'pointer');
-                }
                 return lay;
             });
+            
+            if (clickableContent && 
+                typeof clickableContent === 'string' && 
+                clickableContent.trim()) {
+                
+                $wrapper.ariaClick( function () {
+                    $.wiki(clickableContent);
+                }).css('cursor', 'pointer');
+            }
             
             $wrapper.append($layers);
             
