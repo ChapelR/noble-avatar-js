@@ -6,13 +6,7 @@ Download the files, or [grab the `dist/` directory of the repo](https://github.c
 
 Download the files:
 * [From Google Drive](https://drive.google.com/open?id=1rCXShwoD3teElwwgheosZyYeUREfjtnB)
-* [From GitHub](https://github.com/ChapelR/holy-land-demo/raw/master/noble-avatar/noble-avatars.zip)
-* [From HolyLandGame.com](http://holylandgame.com/noble-avatar/noble-avatars.zip)
-
-Download the docs:
-* [From Google Drive](https://drive.google.com/open?id=1U27wuSrZjXOr1-Jcu5clgqKEM2aYsddr)
-* [From GitHub](https://github.com/ChapelR/holy-land-demo/raw/master/noble-avatar/noble-avatars.docs.zip)
-* [From HolyLandGame.com](http://holylandgame.com/noble-avatar/noble-avatars.docs.zip)
+* [From GitHub](https://github.com/ChapelR/noble-avatar-js/releases)
 
 ### Part 2: Place the `cac` folder.
 

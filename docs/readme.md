@@ -1,27 +1,21 @@
 Noble avatars is a drop-in character portrait generator for the SugarCube 2 story format of Twine. It was built using resources that were generously open-sourced by [Noble Master Games](http://www.noblemaster.com). All the code was written from the ground up in JavaScript to work with SugarCube. 
 
-[Visit the homepage.](http://holylandgame.com/noble-avatar/)  
-[Live demo.](http://holylandgame.com/noble-avatar/demo/)
+[Visit the homepage.](http://twinelab.net/noble-avatar-js/)  
+[Live demo.](http://twinelab.net/noble-avatar-js/demo/)
 
 ## Downloads
 * [From Google Drive](https://drive.google.com/open?id=1rCXShwoD3teElwwgheosZyYeUREfjtnB)
-* [From GitHub](https://github.com/ChapelR/holy-land-demo/raw/master/noble-avatar/noble-avatars.zip)
-* [From HolyLandGame.com](http://holylandgame.com/noble-avatar/noble-avatars.zip)
-
-## Download the Docs
-* [From Google Drive](https://drive.google.com/open?id=1U27wuSrZjXOr1-Jcu5clgqKEM2aYsddr)
-* [From GitHub](https://github.com/ChapelR/holy-land-demo/raw/master/noble-avatar/noble-avatars.docs.zip)
-* [From HolyLandGame.com](http://holylandgame.com/noble-avatar/noble-avatars.docs.zip)
+* [From GitHub](https://github.com/ChapelR/noble-avatar-js/releases)
 
 ## Documentation
-* [Installation guide](docs/2-Installation.md)
-* [Usage guide](docs/3-Usage.md)
-* [Configuration options](docs/4-Config.md)
-* [Macros](docs/5-Macros.md)
-* [Avatar passages](docs/6-Avatar-Passages.md)
-* [JavaScript API](docs/7-JavaScript-API.md)
-* [CSS selectors reference](docs/8-CSS-Reference.md)
-* [Using custom components](docs/9-Customization.md)
+* [Installation guide](./2-Installation.md)
+* [Usage guide](./3-Usage.md)
+* [Configuration options](./4-Config.md)
+* [Macros](./5-Macros.md)
+* [Avatar passages](./6-Avatar-Passages.md)
+* [JavaScript API](./7-JavaScript-API.md)
+* [CSS selectors reference](./8-CSS-Reference.md)
+* [Using custom components](./9-Customization.md)
 
 ## Features
 * Allows for player-controlled custom character creation out of the box, using a simple macro. 

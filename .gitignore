@@ -52,5 +52,4 @@ build.bat
 docs.bat
 test/tweego.exe
 test/
-_docs/
-docs/index.md
+*.zip
